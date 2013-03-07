@@ -1,2 +1,5 @@
 #ignore python compiled files
 *.pyc
+
+# PID file created by start.sh
+*.pid
