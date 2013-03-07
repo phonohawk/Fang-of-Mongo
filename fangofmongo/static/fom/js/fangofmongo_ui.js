@@ -765,7 +765,13 @@ Fom_mongo_ajax = $.extend({}, $.ui.fom_object.prototype, {
                     sort: [['name',1]],
                     limit:  100,
                     callback: function(data){
-                        if ( 'error' in data ) { alert('error: ' + data['error']); return; }
+                        if ( data == null ) {
+                            alert('failed ajax request');
+                            return;
+                        } else if ('error' in data ) {
+                            alert('error: ' + data['error']);
+                            return;
+                        }
                         var coll_list = Array();
                         for(obj in data['data'])
                             coll_list.push(data['data'][obj]['name'].substr(this.options['database'].length+1)); //strip database_name and dot
